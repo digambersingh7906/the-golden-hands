@@ -1,14 +1,16 @@
-/* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 :root {
   --red: #e74c3c;
-  --green: #27ae60;
+  --green: #2ecc71;
   --orange: #f39c12;
   --pink: #e84393;
-  --dark: #222;
-  --light: #f7f7f7;
-  --text-color: #333;
+  --background: #111;
+  --surface: #1c1c1e;
+  --text-color: #f1f1f1;
+  --muted-text: #aaa;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.1);
 }
 
 * {
@@ -20,46 +22,49 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: var(--light);
+  background-color: var(--background);
   color: var(--text-color);
 }
 
 /* Top bar */
 .top-bar {
-  background-color: var(--dark);
-  color: #ccc;
+  background-color: var(--surface);
+  color: var(--muted-text);
   display: flex;
   justify-content: space-between;
   padding: 0.5em 2em;
   font-size: 0.9em;
+  border-bottom: 1px solid var(--border);
 }
 
 .top-bar .contact i {
   margin-right: 6px;
-  color: var(--red);
+  color: var(--green);
 }
 
 .auth-links a {
-  color: #ccc;
+  color: var(--muted-text);
   margin: 0 5px;
   text-decoration: none;
+  transition: color 0.3s;
 }
 
 .auth-links a:hover {
-  color: white;
+  color: var(--green);
 }
 
 /* Navbar */
 .navbar {
-  background: white;
+  background: var(--surface);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1em 2em;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
 }
 
 .logo {
@@ -82,23 +87,25 @@ body {
 }
 
 .nav-links li a:hover {
-  color: var(--red);
+  color: var(--green);
 }
 
 /* Buttons */
 .btn {
   padding: 0.6em 1.2em;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   font-weight: bold;
   color: white;
   cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
+  transition: all 0.3s ease;
   margin-left: 10px;
+  box-shadow: 0 0 10px transparent;
 }
 
 .btn:hover {
-  transform: scale(1.05);
+  transform: translateY(-2px);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
 .btn.red {
@@ -109,14 +116,14 @@ body {
   background-color: var(--green);
 }
 
-/* Hero section */
+/* Hero Section */
 .hero {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
   padding: 4em 2em;
-  background: linear-gradient(to right, #fff, #fef5f5);
+  background: linear-gradient(135deg, #111, #1e1e1e);
   gap: 2em;
   animation: fadeIn 1.5s ease;
 }
@@ -126,8 +133,8 @@ body {
 }
 
 .hero-content h1 {
-  font-size: 2.5em;
-  color: var(--red);
+  font-size: 2.8em;
+  color: var(--green);
   margin-bottom: 0.5em;
 }
 
@@ -137,15 +144,16 @@ body {
 
 .hero-content p {
   line-height: 1.8;
-  margin-bottom: 1em;
   font-size: 1.05em;
+  color: var(--muted-text);
+  margin-bottom: 1em;
 }
 
 .hero-img {
   width: 100%;
   max-width: 400px;
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
   transition: transform 0.5s;
 }
 
@@ -159,33 +167,35 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2em;
   padding: 3em 2em;
-  background: #fff;
+  background: var(--background);
 }
 
 .campaign {
-  background: #fdfdfd;
-  border-radius: 10px;
-  padding: 1em;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-  transition: transform 0.3s;
+  background: var(--surface);
+  border-radius: 15px;
+  padding: 1.5em;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
   animation: fadeUp 1s ease;
+  border: 1px solid var(--border);
 }
 
 .campaign:hover {
-  transform: translateY(-8px);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
 }
 
 .campaign img {
   width: 100%;
   height: 180px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 10px;
   margin-bottom: 0.8em;
 }
 
 .label {
   display: inline-block;
-  padding: 0.3em 0.8em;
+  padding: 0.4em 1em;
   border-radius: 20px;
   font-size: 0.8em;
   margin-bottom: 0.5em;
@@ -199,27 +209,46 @@ body {
 .campaign h3 {
   margin-bottom: 0.5em;
   font-size: 1.2em;
+  color: var(--text-color);
 }
 
 .campaign p {
   font-size: 0.95em;
   margin-bottom: 0.5em;
+  color: var(--muted-text);
 }
 
 .campaign progress {
   width: 100%;
-  height: 15px;
-  margin-bottom: 1em;
+  height: 12px;
+  border-radius: 10px;
+  background: #444;
+  appearance: none;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #444;
+  border-radius: 10px;
+}
+
+progress::-webkit-progress-value {
+  background: var(--green);
+  border-radius: 10px;
+}
+
+progress::-moz-progress-bar {
+  background: var(--green);
 }
 
 /* Footer */
 footer {
-  background: var(--dark);
-  color: #ccc;
+  background: #000;
+  color: var(--muted-text);
   text-align: center;
   padding: 2em 1em;
   margin-top: 3em;
   font-size: 0.95em;
+  border-top: 1px solid var(--border);
 }
 
 /* Animations */
