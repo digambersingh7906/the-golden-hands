@@ -261,3 +261,81 @@ footer {
     margin-top: 1em;
   }
 }
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1em;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1em;
+    padding-left: 0;
+  }
+
+  .nav-links li {
+    margin: 0.5em 0;
+  }
+
+  .buttons {
+    margin-top: 1em;
+    align-self: stretch;
+  }
+
+  .top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1em;
+  }
+
+  .top-bar .contact, .top-bar .auth-links {
+    width: 100%;
+    margin-bottom: 0.5em;
+  }
+
+  .about-section {
+    padding: 2em 1em;
+  }
+
+  .mission-cards {
+    flex-direction: column;
+    gap: 1em;
+  }
+
+  .mission-card {
+    width: 100%;
+  }
+
+  .about-section h2 {
+    font-size: 2em;
+  }
+
+  .about-contact {
+    padding: 1em;
+  }
+
+  footer {
+    padding: 1em;
+    font-size: 0.9em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .about-section h2 {
+    font-size: 1.6em;
+  }
+
+  .about-section p,
+  .mission-card p {
+    font-size: 1em;
+  }
+
+  .mission-card h3 {
+    font-size: 1.1em;
+  }
+}
+
