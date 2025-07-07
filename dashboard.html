@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NGO Admin Dashboard - The Golden Hands</title>
+  <link rel="stylesheet" href="dashboard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Golden Hands Admin</h2>
+    <ul>
+      <li><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
+      <li><a href="#"><i class="fas fa-donate"></i> Donations</a></li>
+      <li><a href="#"><i class="fas fa-leaf"></i> Campaigns</a></li>
+      <li><a href="#"><i class="fas fa-users"></i> Volunteers</a></li>
+      <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <header>
+      <h1>Dashboard Overview</h1>
+    </header>
+
+    <section class="cards">
+      <div class="card">
+        <h3>Total Donations</h3>
+        <p>$18,200</p>
+      </div>
+      <div class="card">
+        <h3>Ongoing Campaigns</h3>
+        <p>3 Active</p>
+      </div>
+      <div class="card">
+        <h3>Registered Volunteers</h3>
+        <p>47 Members</p>
+      </div>
+      <div class="card">
+        <h3>Visitors Today</h3>
+        <p>98</p>
+      </div>
+    </section>
+
+    <section class="charts">
+      <h2>Campaigns Performance</h2>
+      <img src="chart-placeholder.png" alt="Chart or graph here" style="width:100%; max-height: 300px;">
+    </section>
+  </div>
+  <script>
+const ctx = document.getElementById('campaignChart').getContext('2d');
+const campaignChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Animal Welfare', 'Planting Trees', 'Education'],
+    datasets: [{
+      label: 'Donations (USD)',
+      data: [2740, 1540, 3120],
+      backgroundColor: ['#e74c3c', '#27ae60', '#e91e63'],
+      borderRadius: 6
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: 'Donations Per Campaign',
+        font: {
+          size: 18
+        }
+      },
+      legend: {
+        display: false
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: {
+          stepSize: 1000
+        }
+      }
+    }
+  }
+});
+</script>
+
+</body>
+</html>

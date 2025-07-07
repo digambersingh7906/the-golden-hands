@@ -1,0 +1,10 @@
+
+CREATE DATABASE IF NOT EXISTS ngo;
+USE ngo;
+CREATE TABLE IF NOT EXISTS campaigns (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(255),
+  goal_amount DECIMAL(10,2),
+  amount_raised DECIMAL(10,2),
+  category VARCHAR(100)
+);

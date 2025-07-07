@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Member</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Add New Member</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+    </nav>
+  </header>
+  <main>
+    <form action="php/add_member.php" method="POST">
+      <label>Name: <input type="text" name="name" required></label><br><br>
+      <label>Email: <input type="email" name="email" required></label><br><br>
+      <label>Role: <input type="text" name="role" required></label><br><br>
+      <button type="submit">Add Member</button>
+    </form>
+  </main>
+</body>
+</html>
