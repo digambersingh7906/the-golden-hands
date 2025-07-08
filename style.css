@@ -129,7 +129,7 @@ body {
 }
 
 .hero-content {
-  max-width: 600px;
+  max-width: 1200px;
 }
 
 .hero-content h1 {
@@ -151,7 +151,8 @@ body {
 
 .hero-img {
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
+  height: auto;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
   transition: transform 0.5s;
@@ -288,5 +289,10 @@ footer {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.3em;
+  }
+
+  .hero-img {
+    max-width: 100%;
+    height: auto;
   }
 }

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login - The Golden Hands</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <style>
+    body {
+      font-family: Arial;
+      background: #121212;
+      color: #fff;
+      margin: 0;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      background: #222;
+      flex-wrap: wrap;
+    }
+
+    .header-left a, .header-right a {
+      color: #2ecc71;
+      text-decoration: none;
+      font-size: 14px;
+      margin-right: 12px;
+    }
+
+    .header-center {
+      width: 100%;
+      text-align: center;
+      font-weight: bold;
+      color: #00d1b2;
+      font-size: 18px;
+      margin-top: 6px;
+    }
+
+    .menu-btn {
+      background-color: #3498db;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 80px auto;
+      background: #1e1e1e;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #000;
+    }
+
+    h2 {
+      text-align: center;
+      color: #00d1b2;
+    }
+
+    label { margin-top: 10px; display: block; }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: none;
+      background: #333;
+      color: white;
+    }
+
+    .captcha-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .captcha-text {
+      padding: 10px 15px;
+      background: #444;
+      font-weight: bold;
+      letter-spacing: 4px;
+    }
+
+    .refresh-btn {
+      background: #00d1b2;
+      border: none;
+      padding: 10px;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button {
+      background: #00d1b2;
+      border: none;
+      padding: 12px;
+      color: white;
+      font-weight: bold;
+      width: 100%;
+      margin-top: 20px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .forgot {
+      text-align: right;
+      margin-top: 10px;
+    }
+
+    .forgot a {
+      color: #00d1b2;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .popup {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-weight: bold;
+      z-index: 999;
+      display: none;
+      font-size: 15px;
+    }
+
+    .popup.success {
+      background-color: rgba(40, 180, 99, 0.9);
+      color: #fff;
+    }
+
+    .popup.error {
+      background-color: rgba(231, 76, 60, 0.9);
+      color: #fff;
+    }
+
+    @media screen and (max-width: 500px) {
+      .header-left, .header-right {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 8px;
+      }
+      .header-center {
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-left">
+      <a href="tel:8979384202">📞 8979384202</a>
+      <a href="mailto:admin@goldenhands.org">📧 admin@goldenhands.org</a>
+    </div>
+
+    <div class="header-center">The Golden Hands Charitable Trust</div>
+
+    <div class="header-right">
+      <a href="index.html" class="menu-btn">🏠 Main Menu</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <form id="loginForm">
+      <h2>User Login</h2>
+
+      <label for="enroll">Enrollment No.</label>
+      <input type="text" name="enroll" id="enroll" required />
+
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" required />
+
+      <label>Verification</label>
+      <div class="captcha-box">
+        <div class="captcha-text" id="captcha-text">######</div>
+        <button type="button" class="refresh-btn" onclick="refreshCaptcha()">↻</button>
+      </div>
+      <input type="text" name="user_captcha" id="user_captcha" placeholder="Enter above code" required>
+
+      <div class="forgot"><a href="forgot_password.php">Forgot Password?</a></div>
+
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <div id="popup" class="popup"></div>
+
+  <script>
+    function showPopup(message, type) {
+      const popup = document.getElementById("popup");
+      popup.textContent = message;
+      popup.className = "popup " + type;
+      popup.style.display = "block";
+      setTimeout(() => popup.style.display = "none", 3000);
+    }
+
+    function refreshCaptcha() {
+      fetch("login.php?getCaptcha=1")
+        .then(res => res.text())
+        .then(code => document.getElementById("captcha-text").textContent = code);
+    }
+
+    refreshCaptcha();
+
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+
+      fetch("login.php", {
+        method: "POST",
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          showPopup("✅ Welcome to: The Golden Hands Charitable Trust", "success");
+          setTimeout(() => window.location.href = "dashboard.php", 2000);
+        } else {
+          showPopup(data.error || "Login failed", "error");
+          refreshCaptcha();
+        }
+      })
+      .catch(() => showPopup("⚠️ Server error", "error"));
+    });
+  </script>
+
+</body>
+</html>

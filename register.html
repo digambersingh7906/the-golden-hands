@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registration Form</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    body {
+      background: linear-gradient(to bottom, #1f1f1f, #121212);
+      color: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+    }
+
+    .top-bar {
+      background-color: #222;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+
+    .top-bar .contact a {
+      color: #2ecc71;
+      text-decoration: none;
+      margin-right: 15px;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to right, #2c3e50, #34495e);
+      padding: 12px 20px;
+      flex-wrap: wrap;
+    }
+
+    .navbar .logo {
+      font-size: 1.6em;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-links li {
+      margin: 0 10px;
+    }
+
+    .nav-links a {
+      color: #ecf0f1;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #1abc9c;
+    }
+
+    .buttons button {
+      margin-left: 10px;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn.red { background-color: #e74c3c; }
+    .btn.green { background-color: #2ecc71; }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: calc(100vh - 160px);
+      padding: 30px;
+    }
+
+    form {
+      background-color: #1e1e1e;
+      padding: 35px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #00d1b2;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #333;
+      color: #fff;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      background-color: #444;
+      border: 1px solid #1abc9c;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      background-color: #1abc9c;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #16a085;
+    }
+
+    .popup {
+      position: fixed;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 15px 25px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      z-index: 1000;
+      display: none;
+      animation: fadeIn 0.3s ease;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    }
+
+    .popup.success {
+      background-color: #2ecc71;
+      color: #fff;
+    }
+
+    .popup.error {
+      background-color: #e74c3c;
+      color: #fff;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; top: 0; }
+      to { opacity: 1; top: 30px; }
+    }
+
+    @media (max-width: 768px) {
+      .navbar .nav-links {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .navbar .buttons {
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="top-bar">
+    <div class="contact">
+      <a href="tel:8979384202"><i class="fas fa-phone"></i> 8979384202</a>
+      <a href="mailto:admin@goldenhands.org"><i class="fas fa-envelope"></i> admin@goldenhands.org</a>
+    </div>
+  </header>
+
+  <nav class="navbar">
+    <a href="index.html"><div class="logo">The Golden Hands</div></a>
+    <ul class="nav-links">
+      <!-- <li><a href="index.html">Home</a></li> -->
+      <!-- <li><a href="#">About</a></li>
+      <li><a href="#">Causes</a></li>
+      <li><a href="#">Volunteer</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul> -->
+    <div class="buttons">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScWG338etHfmL1MA1I_eQiUQLCS08Xz8yEYJ029j7kdNUz9lg/viewform"><button class="btn red">Join</button></a>
+      <button class="btn green">Donate</button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <form id="registrationForm">
+      <h2>Registration Form</h2>
+
+      <label for="enrollment">Enrollment Number</label>
+      <input type="text" id="enrollment" name="enrollment" readonly placeholder="Auto-generated" />
+
+      <label for="name">Name*</label>
+      <input type="text" name="name" id="name" required />
+
+      <label for="email">Email*</label>
+      <input type="email" name="email" id="email" required />
+
+      <label for="dob">Date of Birth*</label>
+      <input type="date" name="dob" id="dob" required />
+
+      <label for="father">Father's Name*</label>
+      <input type="text" name="father" id="father" required />
+
+      <label for="contact">Contact Number*</label>
+      <input type="tel" name="contact" id="contact" pattern="[0-9]{10}" required />
+
+      <label for="address">Address*</label>
+      <textarea name="address" id="address" rows="3" required></textarea>
+
+      <label for="motive">Motive To Join*</label>
+      <select name="motive" id="motive" required>
+        <option value="">--Select--</option>
+        <option value="feed">Love to feed Strays</option>
+        <option value="help">Love helping needy Persons</option>
+        <option value="clean">Loves cleaning Environment</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="password">Password*</label>
+      <input type="password" name="password" id="password" required minlength="6" />
+
+      <label for="confirm_password">Confirm Password*</label>
+      <input type="password" name="confirm_password" id="confirm_password" required minlength="6" />
+
+      <button type="submit">Register</button>
+      <p style="text-align:center; margin-top:10px;">Already have an account? <a href="login.html" style="color:#1abc9c;">Login</a></p>
+    </form>
+  </div>
+
+  <div class="popup" id="popup"></div>
+
+  <script>
+    function showPopup(message, isSuccess = true) {
+      const popup = document.getElementById("popup");
+      popup.textContent = message;
+      popup.className = `popup ${isSuccess ? 'success' : 'error'}`;
+      popup.style.display = "block";
+
+      setTimeout(() => {
+        popup.style.display = "none";
+      }, 5000);
+    }
+
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const pwd = document.getElementById('password').value;
+      const cpwd = document.getElementById('confirm_password').value;
+
+      if (pwd !== cpwd) {
+        showPopup("❌ Passwords do not match.", false);
+        return;
+      }
+
+      const formData = new FormData(this);
+
+      fetch('register.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(res => res.text())
+      .then(data => {
+        if (data.toLowerCase().includes('success') && data.includes('GHCT')) {
+          const enroll = data.match(/GHCT\d{4}/)?.[0] || '';
+          showPopup(`✅ Registered Successfully!\nEnrollment No: ${enroll}`, true);
+          document.getElementById('registrationForm').reset();
+        } else {
+          showPopup("❌ " + data, false);
+        }
+      })
+      .catch(err => showPopup("❌ Error: " + err, false));
+    });
+  </script>
+</body>
+</html>

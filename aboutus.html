@@ -2,57 +2,214 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About Us - The Golden Hands Charitable Trust</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - The Golden Hands</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
+    
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #121212;
+      color: #f0f0f0;
+    }
+
+    .top-bar {
+  background-color: var(--surface);
+  color: var(--muted-text);
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em 2em;
+  font-size: 0.9em;
+  border-bottom: 1px solid var(--border);
+}
+
+.top-bar .contact i {
+  margin-right: 6px;
+  color: var(--green);
+}
+
+.auth-links a {
+  color: var(--muted-text);
+  margin: 0 5px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.auth-links a:hover {
+  color: var(--green);
+}
+  .navbar {
+  background: var(--surface);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 2em;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-size: 1.8em;
+  font-weight: 700;
+  color: var(--red);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5em;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: var(--green);
+}
+
+
+    .buttons button {
+      padding: 0.4em 1em;
+      margin-left: 0.5em;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .buttons .join {
+      background-color: #e74c3c;
+      color: white;
+    }
+
+    .buttons .join:hover {
+      background-color: #c0392b;
+    }
+
+    .buttons .donate {
+      background-color: #2ecc71;
+      color: white;
+    }
+
+    .buttons .donate:hover {
+      background-color: #27ae60;
+    }
+
     .about-section {
       padding: 3em 2em;
-      background: #fff;
-      line-height: 1.8;
+      text-align: center;
     }
 
     .about-section h2 {
-      font-size: 2.5em;
-      margin-bottom: 0.5em;
       color: #27ae60;
+      margin-bottom: 1em;
     }
 
-    .about-section p {
-      font-size: 1.1em;
-      margin-bottom: 1.5em;
-    }
-
-    .mission-cards {
+    .work-section {
       display: flex;
       flex-wrap: wrap;
       gap: 2em;
+      justify-content: center;
+      margin-top: 2em;
     }
 
-    .mission-card {
-      flex: 1 1 300px;
-      background: #f9f9f9;
+    .work-card {
+      background: #1e1e1e;
       border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 255, 128, 0.1);
+      width: 300px;
       padding: 1.5em;
-      border-left: 5px solid #27ae60;
-      box-shadow: 0 0 5px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .mission-card h3 {
+    .work-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(0, 255, 128, 0.3);
+    }
+
+    .work-card img {
+      width: 100%;
+      border-radius: 6px;
+      margin-bottom: 1em;
+    }
+
+    .work-card h3 {
+      color: #2ecc71;
       margin-bottom: 0.5em;
-      color: #2c3e50;
     }
 
-    .about-contact {
+    .trustee-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2em;
       margin-top: 3em;
-      background: #f0f0f0;
-      padding: 2em;
+    }
+
+    .trustee-card {
+      background: #1e1e1e;
+      border-radius: 12px;
+      box-shadow: 0 10px 15px rgba(0,0,0,0.5);
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      color: #ccc;
+    }
+
+    .trustee-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 20px 30px rgba(0,255,128,0.1);
+    }
+
+    .trustee-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .trustee-card .info {
+      padding: 1em;
+    }
+
+    .trustee-card .info h4 {
+      margin: 0.5em 0 0.2em;
+      color: #27ae60;
+    }
+
+    .trustee-card .info p {
+      margin: 0.2em 0;
+      font-size: 0.95em;
+    }
+
+    .map-section {
+      margin-top: 4em;
+      text-align: center;
+    }
+
+    .map-section iframe {
+      width: 90%;
+      height: 300px;
+      border: none;
       border-radius: 8px;
     }
 
-    .about-contact p {
-      margin: 0.5em 0;
+    footer {
+      text-align: center;
+      padding: 2em;
+      background: #000;
+      color: #777;
     }
   </style>
 </head>
@@ -63,8 +220,7 @@
       <span><i class="fas fa-envelope"></i> admin@goldenhands.org</span>
     </div>
     <div class="auth-links">
-      <a href="#">Register</a> |
-      <a href="#">Login</a>
+      <a href="#">Register</a> | <a href="#">Login</a>
     </div>
   </header>
 
@@ -72,54 +228,100 @@
     <div class="logo">The Golden Hands</div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="about.html" class="active">About</a></li>
-      <li><a href="#">Causes</a></li>
-      <li><a href="#">Volunteer</a></li>
-      <li><a href="#">Blog</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="aboutus.html" class="active">About</a></li>
+      <li><a href="campaigns.html">Campaigns</a></li>
+      <li><a href="volunteer.html">Volunteer</a></li>
+      <li><a href="blog.html">Reports</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
     <div class="buttons">
-      <button class="btn red">Donate</button>
+      <button class="join">Join</button>
+      <button class="donate">Donate</button>
     </div>
   </nav>
 
   <section class="about-section">
-    <h2>About Us</h2>
-    <p><strong>The Golden Hands Charitable Trust</strong>, founded by Digamber Singh, Shubham Uniyal, and Shubham Khatri on 14th December 2022, is a registered nonprofit organization headquartered at Saraswati Bhawan, Defence Colony, Ward No-8, Najibabad Road, Kotdwara, Uttarakhand 246149. Our trust is legally established through a formal Deed of Trust and is committed to promoting social welfare and sustainability across India.</p>
-
-    <p>The Trust was initiated with a humble sum of ₹3,300 and is founded on the values of empathy, service, and sustainable development. Our mission is to bring positive change in the lives of the underprivileged, protect nature, and empower communities.</p>
-
-    <div class="mission-cards">
-      <div class="mission-card">
-        <h3>1. Animal Welfare</h3>
-        <p>We feed and medicate stray animals, protect cattle harmed on roads, build shelters, and promote kind treatment of all animals. Our goal is to create a harmonious relationship between humans and animals.</p>
+    <h2>What We Do</h2>
+    <div class="work-section">
+      <div class="work-card">
+        <img src="animal.jpg" alt="Animal Welfare">
+        <h3>Animal Welfare</h3>
+        <p>We feed, medicate, rescue, and protect stray animals, creating a compassionate ecosystem for all creatures.</p>
       </div>
-      <div class="mission-card">
-        <h3>2. Planting Trees & Environment</h3>
-        <p>Through tree plantation, agroforestry, and cleanliness drives, we work to ensure ecological balance, clean water, and sustainable resources for the future.</p>
+      <div class="work-card">
+        <img src="trees.jpg" alt="Planting Trees">
+        <h3>Green Earth</h3>
+        <p>We plant trees and clean parks/rivers to ensure a greener, more breathable environment for future generations.</p>
       </div>
-      <div class="mission-card">
-        <h3>3. Spreading Happiness & Education</h3>
-        <p>We teach poor children, promote vocational skills among the differently abled, and support women and elderly education to enhance livelihoods.</p>
+      <div class="work-card">
+        <img src="happiness.jpg" alt="Spreading Happiness">
+        <h3>Spreading Happiness</h3>
+        <p>We spend time with underprivileged children and elderly, spreading joy and offering informal education support.</p>
       </div>
-      <div class="mission-card">
-        <h3>4. Sanitation & Preventive Healthcare</h3>
-        <p>We eradicate hunger, promote sanitation, and ensure access to clean drinking water and basic medical care for the poor, blind, and disabled.</p>
+      <div class="work-card">
+        <img src="sanitation.jpg" alt="Sanitation">
+        <h3>Sanitation & Health</h3>
+        <p>From providing clean drinking water to hygiene awareness and basic medical care, we uplift the most vulnerable.</p>
       </div>
     </div>
 
-    <p>We also support armed forces veterans, run medical and educational centers, and welcome collaboration with like-minded NGOs. The Trust is governed by a Board of Trustees who ensure proper financial accountability and transparency, meeting regularly and maintaining audited accounts.</p>
+    <h2>Meet Our Team</h2>
+    <div class="trustee-container">
+      <div class="trustee-card">
+        <img src="trustee1.jpg" alt="Digamber Singh">
+        <div class="info">
+          <h4>Digamber Singh</h4>
+          <p><strong>Designation:</strong> President/Chairman</p>
+          <p><strong>Mobile:</strong> 8979384202</p>
+          <p><strong>Email:</strong> admin@goldhand.org</p>
+        </div>
+      </div>
+      <div class="trustee-card">
+        <img src="trustee2.jpg" alt="Shubham Khatri">
+        <div class="info">
+          <h4>Shubham Khatri</h4>
+          <p><strong>Designation:</strong> Vice President</p>
+          <p><strong>Mobile:</strong> 6396799844</p>
+          <p><strong>Email:</strong> helpdesk@goldhand.org</p>
+          <p><strong>Address:</strong> Balbhadrapur, Kotdwara</p>
+        </div>
+      </div>
+      <div class="trustee-card">
+        <img src="trustee3.jpg" alt="Shubham Uniyal">
+        <div class="info">
+          <h4>Shubham Uniyal</h4>
+          <p><strong>Designation:</strong> Manager/Treasurer</p>
+          <p><strong>Mobile:</strong> 8433235458</p>
+          <p><strong>Email:</strong> finance@goldhand.org</p>
+          <p><strong>Address:</strong> Balbhadrapur, Kotdwara</p>
+        </div>
+      </div>
+      <div class="trustee-card">
+        <img src="hr.jpg" alt="Himanshu Barthwal">
+        <div class="info">
+          <h4>Himanshu Barthwal</h4>
+          <p><strong>Designation:</strong> HR Head</p>
+          <p><strong>Mobile:</strong> 9389272688</p>
+          <p><strong>Email:</strong> hr@goldhand.org</p>
+          <p><strong>Address:</strong> Kotdwara</p>
+        </div>
+      </div>
+    </div>
 
-    <div class="about-contact">
+    <div class="about-contact" id="contact">
       <h3>Contact Information</h3>
-      <p><strong>Address:</strong> Saraswati Bhawan, Defence Colony, Ward No-8, Najibabad Road, Kotdwara, Pauri Garhwal, Uttarakhand - 246149</p>
+      <p><strong>Address:</strong> Saraswati Bhawan, Defence Colony, Ward No-8, Najibabad Road, Kotdwara, Uttarakhand - 246149</p>
       <p><strong>Phone:</strong> 8979384202</p>
       <p><strong>Email:</strong> admin@goldenhands.org</p>
-      <p><strong>Trustees:</strong> Digamber Singh, Shubham Uniyal, Shubham Khatri</p>
     </div>
   </section>
 
-  <footer style="text-align:center; padding:2em; background:#222; color:#ccc;">
+  <section class="map-section" id="map">
+    <h2 style="color: #27ae60">Find Us On The Map</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3444.404380171201!2d78.51925471496249!3d29.735678681981294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39095779cd3c40a5%3A0x428b1d75cfed905e!2sKotdwara%2C%20Uttarakhand!5e0!3m2!1sen!2sin!4v1687522471054" allowfullscreen=""></iframe>
+  </section>
+
+  <footer>
     <p>&copy; 2025 The Golden Hands Charitable Trust. All rights reserved.</p>
   </footer>
 </body>
